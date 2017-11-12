@@ -38,6 +38,13 @@ namespace SQLiteWeb
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            services.AddCors(o => o.AddPolicy("AllowEverything", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
 			
 			// Register the Swagger generator, defining one or more Swagger documents
 			services.AddSwaggerGen(c =>
